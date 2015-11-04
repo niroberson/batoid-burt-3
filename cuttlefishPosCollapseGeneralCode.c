@@ -4,9 +4,9 @@ compiled UDF
 **********************************************************/
 #include "udf.h"
 #include "math.h"
-Amax = 0.1; /*Maximum Amplitude */
-Lam = 0.335; /*lambda (wavelength)*/
-w = 15;     /*angular frequency Temporal Angular Frequency*/
+double Amax = 0.1; /*Maximum Amplitude */
+double Lam = 0.335; /*lambda (wavelength)*/
+double w = 11;     /*angular frequency Temporal Angular Frequency*/
 DEFINE_GRID_MOTION(fin,domain,dt,time,dtime)
 {
 	Thread *tf = DT_THREAD(dt); /* Threads come out of macro DT_THREAD */
