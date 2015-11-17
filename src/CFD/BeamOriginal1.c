@@ -1,13 +1,14 @@
 						  /**********************************************************
+						  /**********************************************************
 node motion based on simple beam deflection equation
 compiled UDF
 **********************************************************/
 #include "udf.h"
 #include "math.h"
 
-double Amax = .5; /*Maximum Amplitude */
-double lambda = 300;
-double w = .06;/*angular frequency Temporal Angular Frequency*/
+double Amax = .1; /*Maximum Amplitude */
+double lambda = 100;
+double w = 2.9;/*angular frequency Temporal Angular Frequency*/
 
 
 
@@ -15,7 +16,7 @@ double w = .06;/*angular frequency Temporal Angular Frequency*/
 				double CalcPos(double upper, double lower, double time, Node *v)
 				{
 					double pos;
-				 pos = Amax*((upper)*sin(2*M_PI/lambda*(upper) - w*time)-(lower)*sin(2*M_PI/lambda*(lower) - w*time))/(upper-lower) * NODE_X(v) + Amax*(lower)*sin(2*M_PI/lambda*(lower) - w*time) - Amax*((upper)*sin(2*M_PI/lambda*(upper) - w*time)-(lower)*sin(2*M_PI/lambda*(lower) - w*time))/(upper -lower)*(lower) ;
+				 pos = (Amax*((upper)*sin(2*M_PI/lambda*(upper) - w*time)-(lower)*sin(2*M_PI/lambda*(lower) - w*time))/(upper-lower) * NODE_X(v) + Amax*(lower)*sin(2*M_PI/lambda*(lower) - w*time) - Amax*((upper)*sin(2*M_PI/lambda*(upper) - w*time)-(lower)*sin(2*M_PI/lambda*(lower) - w*time))/(upper -lower)*(lower))*(1-exp(-time)) ;
 				
 				return pos;
 				}
@@ -26,7 +27,7 @@ double w = .06;/*angular frequency Temporal Angular Frequency*/
 
 
 
-DEFINE_GRID_MOTION(beam,domain,dt,time,dtime)
+DEFINE_GRID_MOTION(fin,domain,dt,time,dtime)
 {
 	Thread *tf = DT_THREAD(dt); /* Threads come out of macro DT_THREAD */
 	/* tf is the variable with type thread with a pointer*/
@@ -75,98 +76,115 @@ versus a very large file) */
 			// Only update if not previously updated
 			if(NODE_POS_NEED_UPDATE(v))
 			{
-				if(counter == 0) {
-					Message ("Stay2!");
+				//if(counter == 0) {
+					//Message ("Stay2!");
 				}
 				counter++;
 				/* indicate that node position has been update
 				so that it's not updated more than once */
 				NODE_POS_UPDATED(v); /* Tells fluent that something has changed with the node */
+				/*if (NODE_X(v) == 15) 
+				{
+					posNew[1] = 55.4;
+					
+				posNew[1] =  55.4; 
+				if(time > dtime) {
+					posOld[1] = 55.4; 
+				} else {
+					posOld[1] = 0;
+				}				
+				}*/
 				
-				if (NODE_X(v) <= 14 && NODE_X(v) > 5)
+			
+
+
+
+
+				if (NODE_X(v) <= 29 && NODE_X(v) >= 15)
 				{
 				
 				
-				posNew[1] =  Amax*(14*sin(2*M_PI/lambda*14) - w*time)/(14) * (NODE_X(v)); 
+				posNew[1] =  CalcPos(29,15,time,v); 
 				if(time > dtime) {
-					posOld[1] = Amax*(14*sin(2*M_PI/lambda*14) - w*(time-dtime))/(14) * NODE_X(v); 
+					posOld[1] = CalcPos(29,15,time-dtime,v); 
 				} else {
 					posOld[1] = 0;
 				}				
 				}
 				
 				
-				if (NODE_X(v) <= 28 && NODE_X(v) > 14 )
+				if (NODE_X(v) <= 43 && NODE_X(v) > 29 )
 				{
 				
-					posNew[1] = CalcPos(28,14,time,v);
+					posNew[1] = CalcPos(43,29,time,v);
 				if(time > dtime) {
-				posOld[1] = CalcPos(28,14,(time-dtime),v);
+				posOld[1] = CalcPos(43,29,(time-dtime),v);
 				} else {
 					posOld[1] = 0;
 				}				
 				
 				}
 			
-				if (NODE_X(v) <= 42 && NODE_X(v) > 28)
+				if (NODE_X(v) <= 57 && NODE_X(v) > 43)
 				{
 				
-					posNew[1] = CalcPos(42,28,time,v);
+					posNew[1] = CalcPos(57,43,time,v);
 				if(time > dtime) {
-				posOld[1] = CalcPos(42,28,(time-dtime),v);
+				posOld[1] = CalcPos(57,43,(time-dtime),v);
 				} else {
 					posOld[1] = 0;
 				}				
 				
 				}
-				if (NODE_X(v) <= 56 && NODE_X(v) > 42 )
+				if (NODE_X(v) <= 71 && NODE_X(v) > 57 )
 				{
 				
-					posNew[1] = CalcPos(56,42,time,v);
+					posNew[1] = CalcPos(71,57,time,v);
 				if(time > dtime) {
-				posOld[1] = CalcPos(56,42,(time-dtime),v);
-				} else {
-					posOld[1] = 0;
-				}				
-				
-				}
-				
-				if (NODE_X(v) <= 70 && NODE_X(v) > 56 )
-				{
-				
-					posNew[1] = CalcPos(70,56,time,v);
-				if(time > dtime) {
-				posOld[1] = CalcPos(70,56,(time-dtime),v);
+				posOld[1] = CalcPos(71,57,(time-dtime),v);
 				} else {
 					posOld[1] = 0;
 				}				
 				
 				}
 				
-				if (NODE_X(v) <= 84 && NODE_X(v) > 70 )
+				if (NODE_X(v) <= 85 && NODE_X(v) > 71 )
 				{
 				
-					posNew[1] = CalcPos(84,70,time,v);
+					posNew[1] = CalcPos(85,71,time,v);
 				if(time > dtime) {
-				posOld[1] = CalcPos(84,70,(time-dtime),v);
+				posOld[1] = CalcPos(85,71,(time-dtime),v);
 				} else {
 					posOld[1] = 0;
 				}				
 				
 				}
 				
-				if (NODE_X(v) <= 100 && NODE_X(v) > 84 )
+				if (NODE_X(v) <= 99 && NODE_X(v) > 85 )
 				{
 				
-					posNew[1] = CalcPos(100,84,time,v);
+					posNew[1] = CalcPos(99,85,time,v);
 				if(time > dtime) {
-				posOld[1] = CalcPos(100,84,(time-dtime),v);
+				posOld[1] = CalcPos(99,85,(time-dtime),v);
 				} else {
 					posOld[1] = 0;
 				}				
 				
 				}
 				
+				if ( NODE_X(v) > 99 )
+				{
+				
+					posNew[1] = CalcPos(115,99,time,v);
+				if(time > dtime) {
+				posOld[1] = CalcPos(115,99,(time-dtime),v);
+				} else {
+					posOld[1] = 0;
+				}				
+				
+				}
+				
+
 				
 				
 				
@@ -186,5 +204,5 @@ versus a very large file) */
 	}
 	end_f_loop(f,tf);
 	
-	counter = 0;
-}
+	
+
