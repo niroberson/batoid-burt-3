@@ -9,7 +9,7 @@ Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver(); //Default address 0x40
 // ^^^^ Find these experimentally
 
 // Wave constants
-double f = 0.5;
+double f = 0.1;
 double mid = 90;
 double Amax = 9;
 
@@ -22,7 +22,7 @@ double As[N];
 // Limits of wave constants
 double pmin = 60;
 double pmax = 120;
-double freqmax = 2.0;
+double freqmax = 2;
 
 // Set up waveform generator with constants Pa, Pb for sin,cos polynomials
 double Ck = 1, Co = 1;
@@ -93,12 +93,9 @@ void loop() {
     pwm.setPWM(servonum,0,pulselen[servonum]);
   }
   
-  
   //Fixing Loop Time
   fixTime();
 }
-
-
 
 double setpulse(double ang) {
   double pwmrange = SERVOMAX - SERVOMIN;
