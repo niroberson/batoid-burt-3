@@ -23,13 +23,8 @@ double xs[] = {3, 6, 9, 12, 15, 18, 21, 23};
 #define lambda 2.0*L/3.0 // Wavelength
 #define center 90 // Degrees at center line
 
+// Initialize the time variable
 double start_time = 0;
-// Set up fixed time constants
-int STD_LOOP_TIME = 10;
-int lastLoopTime = STD_LOOP_TIME;
-int lastLoopUsefulTime = STD_LOOP_TIME;
-unsigned long loopStartTime = 0;
-double count = 0;
 
 void setup() {
   Serial.begin(9600);
