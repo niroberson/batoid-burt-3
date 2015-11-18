@@ -18,8 +18,8 @@ double xs[] = {3, 6, 9, 12, 15, 18, 21, 23};
 
 // Define wave parameters
 #define L xs[N-1] // Length of the fin
-#define Amax 9 // Amplitude (degrees)
-#define f 0.25 // Frequency (Hz)
+#define Amax 12 // Amplitude (degrees)
+#define f 2 // Frequency (Hz)
 #define lambda L // Wavelength
 #define center 90 // Degrees at center line
 
@@ -35,7 +35,7 @@ void setup() {
 }
 
 void loop() {
-  double t = millis() - start_time;
+  double t = (millis() - start_time)/1000;
   undulate(t);
 }
 
@@ -56,7 +56,6 @@ void undulate(double t) {
     y[iServo] = A*sin(k*xs[iServo] - f*t);
     setPosition(iServo, center + y[iServo]);
   }
-  delay(100);
 }
 
 // Function to set servo position
