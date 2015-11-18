@@ -44,12 +44,14 @@ void loop() {
   undulate(t);
 }
 
+// Center the fin in the setup
 void centerFin() {
   for (int iServo = 0; iServo < N; iServo++ ) {
     setPosition(iServo, center);
   }
 }
 
+// Undulation function to move each servo according to wave equation
 void undulate(double t) {
   double y[N];
   // Calculate the new position (degrees) of each servo
@@ -58,24 +60,15 @@ void undulate(double t) {
     y[iServo] = A*sin(2*M_PI/lambda*xs[iServo]/L - f*t);
     setPosition(iServo, center + y[iServo]);
   }
-  fixTime();
 }
 
-void fixTime() {
-  lastLoopUsefulTime = millis() - loopStartTime;
-  if(lastLoopUsefulTime<STD_LOOP_TIME) {
-    delay(STD_LOOP_TIME - lastLoopUsefulTime);
-  }
-  lastLoopTime = millis() - loopStartTime;
-  loopStartTime = millis();
-}
-
-
+// Function to set servo position
 void setPosition(int iServo, double angle) {
   double pulse = convertAngleToPulse(iServo, angle);
   pwm.setPWM(iServo, 0, pulse);  
 }
 
+// Functio nto convert an angle into a servo pulse
 double convertAngleToPulse(int iServo, double angle) {
   double pwmrange = SERVOMAX - SERVOMIN;
   double angrange = 180.0; //Approximate range of servo angle
