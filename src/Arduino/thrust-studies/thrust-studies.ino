@@ -13,13 +13,13 @@ Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver(); //Default address 0x40
 // Degree offset to center all servo motors
 double offset[] = {1, 17, 10, 15, 7, 3, -11, -12};
 
-// Define x position of servos
-double xs[] = {3, 6, 9, 12, 15, 18, 21, 23};
+// Define x position of servos, here we have to switch the direction
+double xs[] = {23, 21, 18, 15, 12, 9, 6, 3};
 
 // Define wave parameters
-#define L xs[N-1] // Length of the fin
-#define Amax 9 // Amplitude (degrees)
-#define f 10 // Frequency (Hz)
+#define L xs[0] // Length of the fin
+#define Amax 12 // Amplitude (degrees)
+#define f 8 // Frequency (Hz)
 #define lambda L // Wavelength
 #define center 90 // Degrees at center line
 
