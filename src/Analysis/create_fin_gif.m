@@ -5,8 +5,12 @@ h1 = plot(xd, A(xd).*f(xd, 0));
 h2 = plot(xc, A(xc).*f(xc, 0));
 xlim([xd(1) xd(end)])
 ylim([-max(A(xd)) max(A(xd))])
-xlabel('x')
-ylabel('y')
+xlabel('x [in]')
+ylabel('y [degrees]')
+
+% Plot amplitude envelopes
+plot(xd, A(xd), 'r--')
+plot(xd, -A(xd), 'r--')
 
 % Create movie structures
 init_getframe = struct('cdata',[],'colormap',[]);
@@ -30,6 +34,6 @@ for t = dt:dt:Nz
     idx = idx + 1;
 end
 
-% Play movie
-fps = 1/dt;
-movie(frames, 1, fps)
+% % Play movie
+% fps = 1/dt;
+% movie(frames, 1, fps)
