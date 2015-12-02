@@ -18,14 +18,17 @@ im = frame2im(frames(1));
 imwrite(imind,cm,filename,'gif', 'Loopcount',inf);
 
 % Create movie
-for t = 1:1:Nz
+idx = 1;
+dt = 0.001;
+for t = dt:dt:Nz
     set(h,'YData', A.*f(t));
     drawnow
-    frames(t) = getframe;
-    im = frame2im(frames(t));
+    frames(idx) = getframe;
+    im = frame2im(frames(idx));
     [imind,cm] = rgb2ind(im,256);
     imwrite(imind,cm,filename,'gif','WriteMode','append','delaytime',1/fps);
-    pause(1/1000)
+    pause(dt)
+    idx = idx + 1;
 end
 
 % Play movie

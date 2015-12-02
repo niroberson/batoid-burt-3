@@ -3,7 +3,7 @@ clear, clc, close all
 %% Define wave parameters
 x = [0; 3; 6; 9; 12; 15; 18; 21;];
 L = 21;
-f = 0.5; % Hz
+f = 0.5*2*pi; % Hz
 lambda = L;
 Amax = 0.1;
 k = (2*pi)/lambda;
