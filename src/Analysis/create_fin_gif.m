@@ -1,11 +1,10 @@
-function create_fin_gif(f, A, x, dt, Nz, filename)
+function create_fin_gif(f, A, xd, xc, dt, Nz, filename)
 % Create initial plot
 figure, hold on
-h = plot(x, A.*f(0));
-% plot(x, f(x), 'r--')
-% plot(x, f(x), 'r--')
-xlim([x(1) x(end)])
-ylim([-max(A) max(A)])
+h1 = plot(xd, A(xd).*f(xd, 0));
+h2 = plot(xc, A(xc).*f(xc, 0));
+xlim([xd(1) xd(end)])
+ylim([-max(A(xd)) max(A(xd))])
 xlabel('x')
 ylabel('y')
 
@@ -19,17 +18,18 @@ imwrite(imind,cm,filename,'gif', 'Loopcount',inf);
 
 % Create movie
 idx = 1;
-fps = 1/dt;
 for t = dt:dt:Nz
-    set(h,'YData', A.*f(t));
+    set(h1,'YData', A(xd).*f(xd, t));
+    set(h2,'YData', A(xc).*f(xc, t));
     drawnow
     frames(idx) = getframe;
     im = frame2im(frames(idx));
     [imind,cm] = rgb2ind(im,256);
-    imwrite(imind,cm,filename,'gif','WriteMode','append','delaytime',1/fps);
+    imwrite(imind,cm,filename,'gif','WriteMode','append','delaytime',dt);
     pause(dt)
     idx = idx + 1;
 end
 
 % Play movie
+fps = 1/dt;
 movie(frames, 1, fps)
