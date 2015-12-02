@@ -13,8 +13,8 @@ exp_inc_dec = @(x)  [x(1:x_half1).^(1/2).*Amax/L^(1/2) Amax-x(x_half2:end).^(1/2
 xd = [0; 3; 6; 9; 12; 15; 18; 21];
 xc = 0:0.001:21;
 L = 21;
-f = 8; % Hz
-lambda = 2*L/3;
+f = 8; % Rad/s
+lambda = L;
 Amax = 9; % degrees
 k = (2*pi)/lambda;
 Nz = 10; % s 
@@ -25,7 +25,7 @@ A = @(x, e, th, q) Amax/(L.^e)*(th*x-q).^e;
 y = @(x, t) sin(k*x - f*t);
 
 %% Linearly increasing amplitude
-filename = 'undulate.gif';
+filename = 'undulate8.gif';
 A = @(x) x*Amax/L;
 create_fin_gif(y, A, xd, xc, dt, Nz, filename)
 

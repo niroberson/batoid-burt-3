@@ -14,11 +14,11 @@ for idxFile = 1:numel(data_files)
         [name, ~] = strsplit(fileName, '.');
         h1 = figure;
         plot(dat.data{1});
-        [x, y] = ginput(1);
+        x = ginput(2);
         close(h1);
         
         % Compute results and store
-        v_steady = dat.data{1}(ceil(x):end);
+        v_steady = dat.data{1}(ceil(x(1)):floor(x(2)));
         v_avg = mean(v_steady);
         avg_v.(name{1}) = v_avg;
         max_v.(name{1}) = compute_avg_max(@max, v_steady, 0.01);
