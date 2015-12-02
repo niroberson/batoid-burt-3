@@ -17,7 +17,7 @@ Amax = 0.1;
 k = (2*pi)/lambda;
 Nz = 10; % s 
 dt = 0.05; % s
-filename = 'waveform12.gif';
+filename = 'waveform05.gif';
 y = @(x, t) sin(k*x - f*t);
 A = @(x) x*Amax/L;
 create_fin_gif(y, A, xd, xc, dt, Nz, filename)
