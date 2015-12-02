@@ -1,4 +1,4 @@
-function create_fin_gif(f, A, x, Nz, fps, filename)
+function create_fin_gif(f, A, x, dt, Nz, filename)
 % Create initial plot
 figure, hold on
 h = plot(x, A.*f(0));
@@ -19,7 +19,7 @@ imwrite(imind,cm,filename,'gif', 'Loopcount',inf);
 
 % Create movie
 idx = 1;
-dt = 0.001;
+fps = 1/dt;
 for t = dt:dt:Nz
     set(h,'YData', A.*f(t));
     drawnow
@@ -32,4 +32,4 @@ for t = dt:dt:Nz
 end
 
 % Play movie
-movie(frames, 10, fps)
+movie(frames, 1, fps)
