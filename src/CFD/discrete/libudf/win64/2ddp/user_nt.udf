@@ -1,0 +1,5 @@
+CSOURCES= $(SRC)Finmoition.c
+HSOURCES=
+VERSION=2ddp
+PARALLEL_NODE=none
+GPU_SUPPORT=off
