@@ -8,4 +8,4 @@
 #PBS -m bea
 cd $PBS_O_WORKDIR
 module load ansys
-fluent 2ddp -t$PBS_NP -pinfiniband -cnf=$PBS_NODEFILE -g -ssh < setup/simulate_fin.tui
+fluent 2ddp -t$PBS_NP -pinfiniband -cnf=$PBS_NODEFILE -g -ssh < simulate_fin.tui

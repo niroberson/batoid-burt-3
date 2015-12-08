@@ -1,2 +1,2 @@
-cd /setup
+cd setup/
 qsub submit_dev.sh

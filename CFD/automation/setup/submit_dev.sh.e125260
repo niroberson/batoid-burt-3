@@ -1,0 +1,45 @@
+/opt/ofed/1.5.4.1/bin/ofed_info: line 119: echo: write error: Broken pipe
+/opt/ofed/1.5.4.1/bin/ofed_info: line 120: echo: write error: Broken pipe
+/opt/ofed/1.5.4.1/bin/ofed_info: line 121: echo: write error: Broken pipe
+grep: write error: Broken pipe
+/opt/ofed/1.5.4.1/bin/ofed_info: line 119: echo: write error: Broken pipe
+/opt/ofed/1.5.4.1/bin/ofed_info: line 120: echo: write error: Broken pipe
+/opt/ofed/1.5.4.1/bin/ofed_info: line 121: echo: write error: Broken pipe
+grep: write error: Broken pipe
+/opt/apps/ansys/14.5/v145/fluent/fluent14.5.0/cortex/lnamd64/cortex.14.5.0 -f fluent -g -newcx (fluent "2ddp -pinfiniband  -host -r14.5.0 -t4 -mpi=pcmpi -cnf=/opt/torque/4.2.9/spool/aux//125260.master.cluster -path/opt/apps/ansys/14.5/v145/fluent -ssh")
+Starting /opt/apps/ansys/14.5/v145/fluent/fluent14.5.0/lnamd64/2ddp_host/fluent.14.5.0 host -cx it018.cluster:60709:51298 "(list (rpsetvar (QUOTE parallel/function) "fluent 2ddp -flux -node -r14.5.0 -t4 -pinfiniband -mpi=pcmpi -cnf=/opt/torque/4.2.9/spool/aux//125260.master.cluster -ssh") (rpsetvar (QUOTE parallel/rhost) "") (rpsetvar (QUOTE parallel/ruser) "") (rpsetvar (QUOTE parallel/nprocs_string) "4") (rpsetvar (QUOTE parallel/auto-spawn?) #t) (rpsetvar (QUOTE parallel/trace-level) 0) (rpsetvar (QUOTE parallel/remote-shell) 1) (rpsetvar (QUOTE parallel/path) "/opt/apps/ansys/14.5/v145/fluent") (rpsetvar (QUOTE parallel/hostsfile) "/opt/torque/4.2.9/spool/aux//125260.master.cluster") )"
+Loading "/opt/apps/ansys/14.5/v145/fluent/fluent14.5.0/lib/flprim.dmp.1119-64"
+Done.
+Cleanup script file is /home/nathir2/ULTRA/batoid-burt-3/CFD/automation/setup/cleanup-fluent-it018-31247.sh
+
+Error: File "./setup/2D_DiscreteFin.cas" not found!
+Error Object: #f
+
+Primitive Error at Node 1: The UDF library you are trying to load (libudf) is not compiled for parallel use on the current platform (lnamd64).
+
+No such file or directory
+/home/nathir2/ULTRA/batoid-burt-3/CFD/automation/setup/libudf/lnamd64/2ddp_node/libudf.so
+
+Primitive Error at Node 2: The UDF library you are trying to load (libudf) is not compiled for parallel use on the current platform (lnamd64).
+
+No such file or directory
+/home/nathir2/ULTRA/batoid-burt-3/CFD/automation/setup/libudf/lnamd64/2ddp_node/libudf.so
+
+Primitive Error at Node 3: The UDF library you are trying to load (libudf) is not compiled for parallel use on the current platform (lnamd64).
+
+No such file or directory
+/home/nathir2/ULTRA/batoid-burt-3/CFD/automation/setup/libudf/lnamd64/2ddp_node/libudf.so
+
+Primitive Error at Node 0: The UDF library you are trying to load (libudf) is not compiled for parallel use on the current platform (lnamd64).
+
+No such file or directory
+/home/nathir2/ULTRA/batoid-burt-3/CFD/automation/setup/libudf/lnamd64/2ddp_node/libudf.so
+
+Error: The UDF library you are trying to load (libudf) is not compiled for parallel use on the current platform (lnamd64).
+
+No such file or directory
+/home/nathir2/ULTRA/batoid-burt-3/CFD/automation/setup/libudf/lnamd64/2ddp_host/libudf.so
+Error Object: #f
+
+Error: get-thread: invalid thread id (integer) or name (symbol)
+Error Object: #f

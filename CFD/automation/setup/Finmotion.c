@@ -5,9 +5,9 @@ compiled UDF
 #include "udf.h"
 #include "math.h"
 
-double Amax = .0547; /*Maximum Amplitude */
-double lambda = 26.6;
-double w = 6.28;/*angular frequency Temporal Angular Frequency*/
+double Amax =  0.06737878869; /*Maximum Amplitude */
+double lambda = 0.54864;
+double w = 8;/*angular frequency Temporal Angular Frequency*/
 
 
 
@@ -51,7 +51,7 @@ versus a very large file) */
 	
 	
 	
-	int counter = 0;
+	
 	int n;
 	
 	
@@ -72,112 +72,93 @@ versus a very large file) */
 			v = F_NODE(f,tf,n); /* v is our node variable. Fill my variable v with the data of
 			the nth node. F_NODE is a macro that executes this. */
 
-			// Only update if not previously updated
+			
 			if(NODE_POS_NEED_UPDATE(v))
 			{
-			///	if(counter == 0) 
-			//	{
-			//		Message ("Stay2!");
-			//	}
-				counter++;
+		
+			
 				/* indicate that node position has been update
 				so that it's not updated more than once */
 				NODE_POS_UPDATED(v); /* Tells fluent that something has changed with the node */
-				/*if (NODE_X(v) == 15) 
-				{
-					posNew[1] = 55.4;
-					
-				posNew[1] =  55.4; 
-				if(time > dtime) {
-					posOld[1] = 55.4; 
-				} else {
-					posOld[1] = 0;
-				}				
-				}*/
 				
-			
-
-
-
-
-				if (NODE_X(v) <= 8 && NODE_X(v) >= 5)
+				if (NODE_X(v) <= .2032 && NODE_X(v) >= .127)
 				{
 				
 				
-				posNew[1] =  CalcPos(8,5,time,v); 
+				posNew[1] =  CalcPos(.2032,.127,time,v); 
 				if(time > dtime) {
-					posOld[1] = CalcPos(8,5,time-dtime,v); 
+					posOld[1] = CalcPos(.2032,.127,time-dtime,v); 
 				} else {
 					posOld[1] = 0;
 				}				
 				}
 				
 				
-				if (NODE_X(v) <= 11 && NODE_X(v) > 8 )
+				if (NODE_X(v) <= .2794 && NODE_X(v) > .2032 )
 				{
 				
-					posNew[1] = CalcPos(11,8,time,v);
+					posNew[1] = CalcPos(.2794,.2032,time,v);
 				if(time > dtime) {
-				posOld[1] = CalcPos(11,8,(time-dtime),v);
+				posOld[1] = CalcPos(.2794,.2032,(time-dtime),v);
 				} else {
 					posOld[1] = 0;
 				}				
 				
 				}
 			
-				if (NODE_X(v) <= 14 && NODE_X(v) > 1)
+				if (NODE_X(v) <= .3556 && NODE_X(v) > .2794)
 				{
 				
-					posNew[1] = CalcPos(14,11,time,v);
+					posNew[1] = CalcPos(.3556,.2794,time,v);
 				if(time > dtime) {
-				posOld[1] = CalcPos(14,11,(time-dtime),v);
+				posOld[1] = CalcPos(.3556,.2794,(time-dtime),v);
 				} else {
 					posOld[1] = 0;
 				}				
 				
 				}
-				if (NODE_X(v) <= 17 && NODE_X(v) > 14 )
+				if (NODE_X(v) <= .4318 && NODE_X(v) > .3556 )
 				{
 				
-					posNew[1] = CalcPos(17,14,time,v);
+					posNew[1] = CalcPos(.4318,.3556,time,v);
 				if(time > dtime) {
-				posOld[1] = CalcPos(17,14,(time-dtime),v);
-				} else {
-					posOld[1] = 0;
-				}				
-				
-				}
-				
-				if (NODE_X(v) <= 21 && NODE_X(v) > 17 )
-				{
-				
-					posNew[1] = CalcPos(21,17,time,v);
-				if(time > dtime) {
-				posOld[1] = CalcPos(21,17,(time-dtime),v);
+				posOld[1] = CalcPos(.4318,.3556,(time-dtime),v);
 				} else {
 					posOld[1] = 0;
 				}				
 				
 				}
 				
-				if (NODE_X(v) <= 24 && NODE_X(v) > 21 )
+				if (NODE_X(v) <= .5334 && NODE_X(v) > .4318 )
 				{
 				
-					posNew[1] = CalcPos(24,21,time,v);
+					posNew[1] = CalcPos(.5334,.4318,time,v);
 				if(time > dtime) {
-				posOld[1] = CalcPos(24,21,(time-dtime),v);
+				posOld[1] = CalcPos(.5334,.4318,(time-dtime),v);
 				} else {
 					posOld[1] = 0;
 				}				
 				
 				}
 				
-				if ( NODE_X(v) <= 26.6 && NODE_X(v) > 24 )
+				if (NODE_X(v) <= .6096 && NODE_X(v) > .5334 )
 				{
 				
-					posNew[1] = CalcPos(26.6,24,time,v);
+					posNew[1] = CalcPos(.6096,.5334,time,v);
 				if(time > dtime) {
-				posOld[1] = CalcPos(26.6,24,(time-dtime),v);
+				posOld[1] = CalcPos(.6096,.5334,(time-dtime),v);
+				} else {
+					posOld[1] = 0;
+				}				
+				
+				}
+				
+				if ( NODE_X(v) <= .67564 && NODE_X(v) > .6096 )
+				{
+				
+					posNew[1] = CalcPos(.67564,.6096,time,v);
+				if(time > dtime) {
+				posOld[1] = CalcPos(.67564,.6096,(time-dtime),v);
 				} else {
 					posOld[1] = 0;
 				}				
@@ -190,9 +171,9 @@ versus a very large file) */
 				
 				
 				
-			posOld[1] = NODE_Y(v) - posOld[1]; // The original position (prone to numerical error)
+			posOld[1] = NODE_Y(v) - posOld[1]; 
 						
-				NV_D(dx, =, NODE_X(v), posNew[1] + posOld[1], NODE_Z(v)); // dx is a 3D vector with x and z coords initialized as 0
+				NV_D(dx, =, NODE_X(v), posNew[1] + posOld[1], NODE_Z(v)); 
 				NV_V(NODE_COORD(v), =, dx); /* x + dx */ 
 				
 				

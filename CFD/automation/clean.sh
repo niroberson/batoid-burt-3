@@ -1,5 +1,6 @@
-rm setup/log
+cd setup/
+rm log
 rm submit_dev.sh.*
-rm -r setup/libudf
+rm -r libudf/
 rm cleanup*
 rm fluenterro*

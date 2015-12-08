@@ -1,0 +1,20 @@
+
+Error [client] [time 12/8/15 16:41:9] The UDF library you are trying to load (libudf) is not compiled for parallel use on the current platform (lnamd64).
+
+No such file or directory
+/home/nathir2/ULTRA/batoid-burt-3/CFD/automation/setup/libudf/lnamd64/2ddp_host/libudf.so
+999999: /opt/apps/ansys/14.5/v145/fluent/fluent14.5.0/lnamd64/2ddp_host/fluent.14.5.0(CX_Primitive_Error+0x200) [0x15aec90]
+999999: /opt/apps/ansys/14.5/v145/fluent/fluent14.5.0/lnamd64/2ddp_host/fluent.14.5.0() [0x15aeed5]
+999999: /lib64/libpthread.so.0(+0xf500) [0x7fbf6b13e500]
+999999: /opt/apps/ansys/14.5/v145/fluent/fluent14.5.0/lnamd64/2ddp_host/fluent.14.5.0(CX_Primitive_Error+0x275) [0x15aed05]
+999999: /opt/apps/ansys/14.5/v145/fluent/fluent14.5.0/lnamd64/2ddp_host/fluent.14.5.0(Add_UDF_Library+0x817) [0x4ffd07]
+999999: /opt/apps/ansys/14.5/v145/fluent/fluent14.5.0/lnamd64/2ddp_host/fluent.14.5.0(Open_UDF_Library+0x341) [0x4ff351]
+999999: /opt/apps/ansys/14.5/v145/fluent/fluent14.5.0/lnamd64/2ddp_host/fluent.14.5.0() [0x6a261f]
+999999: /opt/apps/ansys/14.5/v145/fluent/fluent14.5.0/lnamd64/2ddp_host/fluent.14.5.0(eval+0x84c) [0x15e64dc]
+999999: /opt/apps/ansys/14.5/v145/fluent/fluent14.5.0/lnamd64/2ddp_host/fluent.14.5.0(eval+0x7ce) [0x15e645e]
+999999: /opt/apps/ansys/14.5/v145/fluent/fluent14.5.0/lnamd64/2ddp_host/fluent.14.5.0(eval+0x136a) [0x15e6ffa]
+999999: /opt/apps/ansys/14.5/v145/fluent/fluent14.5.0/lnamd64/2ddp_host/fluent.14.5.0(eval+0xc9b) [0x15e692b]
+999999: /opt/apps/ansys/14.5/v145/fluent/fluent14.5.0/lnamd64/2ddp_host/fluent.14.5.0() [0x15e8348]
+999999: /opt/apps/ansys/14.5/v145/fluent/fluent14.5.0/lnamd64/2ddp_host/fluent.14.5.0(eval_errprotect+0x32) [0x15e83d2]
+999999: /opt/apps/ansys/14.5/v145/fluent/fluent14.5.0/lnamd64/2ddp_host/fluent.14.5.0(eval+0x5ea) [0x15e627a]
+999999: /opt/apps/ansys/14.5/v145/fluent/fluent14.5.0/lnamd64/2ddp_host/fluent.14.5.0(eval+0x839) [0x15e64c9]
