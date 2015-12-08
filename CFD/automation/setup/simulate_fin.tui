@@ -1,4 +1,4 @@
-file/rcd ./fin.msh
+file/rcd ./setup/fin.msh
 define/user-defined/compiled-functions
 load
 libudf
@@ -15,4 +15,4 @@ no
 /file/autosave/append-file-name-with time-step 6
 /solve/set/time-step .004
 /solve/dual-time-iterate 1500 80
-/file/write-data/2DFin.dat
+/file/write-data ./2DFin.dat
