@@ -2,7 +2,7 @@ define/user-defined/compile
 compile
 libudf
 yes
-FinMotion.c
+Finmotion.c
 
 
 

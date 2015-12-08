@@ -1,4 +1,4 @@
-file/rcd ./setup/fin.msh
+file/rcd ./setup/2D_DiscreteFin.cas
 define/user-defined/compiled-functions
 load
 libudf
