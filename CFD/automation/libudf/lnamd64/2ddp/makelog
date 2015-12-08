@@ -1,0 +1,4 @@
+make[1]: Entering directory `/home/nathir2/ULTRA/batoid-burt-3/CFD/automation/libudf/lnamd64/2ddp'
+make[1]: *** No rule to make target `FinMotion.c', needed by `udf_names.c'.
+make[1]: Target `default' not remade because of errors.
+make[1]: Leaving directory `/home/nathir2/ULTRA/batoid-burt-3/CFD/automation/libudf/lnamd64/2ddp'

@@ -1,0 +1,4 @@
+CSOURCES= FinMotion.c
+HSOURCES=
+FLUENT_INC=/opt/apps/ansys/14.5/v145/fluent
+GPU_SUPPORT=off

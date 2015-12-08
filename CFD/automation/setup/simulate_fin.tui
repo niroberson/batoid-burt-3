@@ -1,12 +1,12 @@
 file/rcd ./fin.msh
 define/user-defined/compiled-functions
 load
-libudf3DFin
+libudf
 define/dynamic-mesh/zones
 create
 fin
 user-defined
-fin::libudf3DFin
+fin::libudf
 no
 constant
 0
@@ -15,4 +15,4 @@ no
 /file/autosave/append-file-name-with time-step 6
 /solve/set/time-step .004
 /solve/dual-time-iterate 1500 80
-/file/write-data/3DDFin.dat.gz
+/file/write-data/2DFin.dat
