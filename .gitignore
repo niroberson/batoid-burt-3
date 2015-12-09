@@ -1,3 +1,5 @@
 *.oneto*
 *.gif
 *.asv
+log*
+libudf*
