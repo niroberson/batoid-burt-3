@@ -1,25 +1,33 @@
 import os
+import json
 
 # Define the data storage directory, make sure this directory exists
-data = os.path.join(os.getcwd(), 'sim_data')
+base = os.getcwd()
+data = os.path.join(base, 'sim_data')
 if not os.path.exists(data):
-	   os.makedirs(data)
+		print('Created directory: ' + data)
+		os.makedirs(data)
 
 # Read in from config all of the parameters
+config_path = os.path.join(base, 'config.json')
+with open(config_path) as config_file:
+	config = json.load(config_file)
 
-# Generate folders that describe the combinations of parameters
+# Generate C input files that combines parameters
+
+# Generate strings that combines all parameters
+
 
 # Create a list of all the paths of the directories to create
 scaffold = []
 for parm in ['w1', 'w2', 'w3', 'w4', 'w5']:
 	this_path = os.path.join(data, parm)
-	print(this_path)
 	scaffold.append(this_path)
 
 # Create all paths in scaffold
 for directory in scaffold:
-	print(directory)
 	if not os.path.exists(directory):
-	    os.makedirs(directory)
+		print('Created directory: ' + directory)
+		os.makedirs(directory)
 
 # Copy the general case into each directory
