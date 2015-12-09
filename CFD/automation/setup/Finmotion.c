@@ -5,25 +5,18 @@ compiled UDF
 #include "udf.h"
 #include "math.h"
 
-double Amax =  0.06737878869; /*Maximum Amplitude */
+double Amax =  0.06737878869;
 double lambda = 0.54864;
-double w = 8;/*angular frequency Temporal Angular Frequency*/
+double w = 8;
 
 
+double CalcPos(double upper, double lower, double time, Node *v)
+{
+	double pos;
+ pos = (Amax*((upper)*sin(2*M_PI/lambda*(upper) - w*time)-(lower)*sin(2*M_PI/lambda*(lower) - w*time))/(upper-lower) * (NODE_X(v)) + Amax*(lower)*sin(2*M_PI/lambda*(lower) - w*time) - Amax*((upper)*sin(2*M_PI/lambda*(upper) - w*time)-(lower)*sin(2*M_PI/lambda*(lower) - w*time))/(upper -lower)*(lower))*(1-exp(-time)) ;
 
-
-				double CalcPos(double upper, double lower, double time, Node *v)
-				{
-					double pos;
-				 pos = (Amax*((upper)*sin(2*M_PI/lambda*(upper) - w*time)-(lower)*sin(2*M_PI/lambda*(lower) - w*time))/(upper-lower) * (NODE_X(v)) + Amax*(lower)*sin(2*M_PI/lambda*(lower) - w*time) - Amax*((upper)*sin(2*M_PI/lambda*(upper) - w*time)-(lower)*sin(2*M_PI/lambda*(lower) - w*time))/(upper -lower)*(lower))*(1-exp(-time)) ;
-				
-				return pos;
-				}
-
-
-
-
-
+return pos;
+}
 
 
 DEFINE_GRID_MOTION(fin,domain,dt,time,dtime)
@@ -47,16 +40,8 @@ versus a very large file) */
 	real NV_VEC(origin), NV_VEC(rvec);
 	real sign;
 	
-
-	
-	
-	
-	
 	int n;
-	
-	
-	
-	
+
 	/* set deforming flag on adjacent cell zone */
 	SET_DEFORMING_THREAD_FLAG(THREAD_T0(tf));
 	sign = 0;
@@ -166,19 +151,12 @@ versus a very large file) */
 				}
 				
 
-				
-				
-				
-				
-				
+		
 			posOld[1] = NODE_Y(v) - posOld[1]; 
 						
 				NV_D(dx, =, NODE_X(v), posNew[1] + posOld[1], NODE_Z(v)); 
 				NV_V(NODE_COORD(v), =, dx); /* x + dx */ 
-				
-				
-				
-				
+					
 				
 			}
 		}		

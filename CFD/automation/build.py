@@ -14,9 +14,20 @@ with open(config_path) as config_file:
 	config = json.load(config_file)
 
 # Generate C input files that combines parameters
+lines = open(os.path.join(base,'setup','Finmotion.c'), 'r').readlines()
+Amax = lines[7]
+wave = lines[8]
+freq = lines[9]
+
+lines[7] = 'double Amax = ' + str(1) + ';\n'
+lines[8] = 'double lambda = ' + str(1) + ';\n'
+lines[9] = 'double w = ' + str(1) + ';\n'
+
+out = open(os.path.join(base,'setup','Finmotion_new.c'), 'w')
+out.writelines(lines)
+out.close()
 
 # Generate strings that combines all parameters
-
 
 # Create a list of all the paths of the directories to create
 scaffold = []
