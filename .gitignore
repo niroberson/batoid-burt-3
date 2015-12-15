@@ -3,4 +3,5 @@
 *.asv
 log*
 libudf*
-*/data/*
+*data*
+*cleanup-fluent*
