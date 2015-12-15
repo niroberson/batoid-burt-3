@@ -15,6 +15,6 @@ constant
 no
 /file/autosave/data-frequency 4
 /file/autosave/append-file-name-with time-step 6
-/file/autosave/root-name /data/2D-Fin-Data.dat.gz
+/file/autosave/root-name ./data/2D-Fin-Data.dat.gz
 /solve/set/time-step .004
 /solve/dual-time-iterate 1500 80
