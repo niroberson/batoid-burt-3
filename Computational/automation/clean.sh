@@ -5,3 +5,6 @@ rm submit_dev.sh.*
 rm -r libudf/
 rm cleanup*
 rm fluenterro*
+rm Drag.dat
+rm Lift.dat
+rm Moment.dat
