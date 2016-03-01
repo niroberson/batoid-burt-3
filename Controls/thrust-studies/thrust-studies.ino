@@ -1,4 +1,3 @@
-#include <Serial.h>
 #include <math.h>
 #include <Wire.h>
 #include <Adafruit_PWMServoDriver.h> // For the 16ch servo driver
@@ -11,7 +10,7 @@ Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver(); //Default address 0x40
 #define SERVOMAX 600
 
 // Degree offset to center all servo motors Nathan is a cool guy.
-double offset[] = {1, 17, 10, 15, 7, 3, -11, -12};
+double offset[] = {1, 17, 10, 15, 7, 3, -11, -38};
 //double offset[] = {-12, -11, 3, 7, 15, 10, 17, 1};
 // Define x position of servos, here we have to switch the direction
 //double xs[] = {23, 21, 18, 15, 12, 9, 6, 3};
@@ -19,8 +18,8 @@ double xs[] = {3, 6, 9, 12, 15, 18, 21, 23};
 
 // Define wave parameters
 #define L 23 // Length of the fin
-#define Amax 30 // Amplitude (degrees)
-#define w 20 // Frequency (rad/s)
+#define Amax 10 // Amplitude (degrees)
+#define w 5 // Frequency (rad/s)
 #define lambda L // Wavelength
 #define center 90 // Degrees at center line
 
@@ -72,4 +71,5 @@ double convertAngleToPulse(int iServo, double angle) {
   double pulse = ((angle + offset[iServo]) * (pwmrange/angrange)) + SERVOMIN;
   return pulse;
 }
+
 
