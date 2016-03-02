@@ -48,7 +48,6 @@ for t=1:size(fin_mat,3)
     for i=1:size(fin_mat,1)
         A_exp(i,t) = d(fin_mat(i,1,t),fin_neutral_mat(i,1),fin_mat(i,2,t),fin_neutral_mat(i,2),fin_mat(i,3,t),fin_neutral_mat(i,3));
         vec = [fin_mat(i,1,t)-fin_neutral_mat(i,1) fin_mat(i,2,t)-fin_neutral_mat(i,2) fin_mat(i,3,t)-fin_neutral_mat(i,3)];
-        sign(vec)
         s = sign(vec(3));
         A_exp(i,t) = s*A_exp(i,t);
     end
@@ -76,28 +75,42 @@ lambda = L;
 spar_length = 7;
 Amax = 10*pi/180*spar_length; % inches
 k = (2*pi)/lambda;
-dt = 1; % s
+dt = 0.156; % s
 
 %% Linearly increasing amplitude
 A = @(x) (L-x + 3)*Amax/L;
 y = @(x, t) sin(k*(L-x) - f*t);
 
 figure(1), hold on
-h1 = plot(xd/L, A(xd).*y(xd, 0));
-h2 = plot(xd_exp/L, A_exp(:,1));
-h3 = plot(xc/L, A(xc).*y(xc, 0));
+h1 = plot(xd/L, A(xd).*y(xd, 0), '*-');
+h2 = plot(xd_exp/L, A_exp(:,1), 'o-');
+% h3 = plot(xc/L, A(xc).*y(xc, 0));
 xlim([0 1])
-ylim([-max(A(xd)) max(A(xd))])
-xlabel('x [in]')
-ylabel('y [degrees]')
-
+ylim([-max(A(xd))-0.3 max(A(xd))+0.3])
+xlabel('x [x(i)/L]')
+ylabel('y [inches]')
+legend({'Input', 'Output'})
+Nz = 5;
 %% Run timesteps
+% Create movie structures
+filename = 'kinematic_verification.gif';
+init_getframe = struct('cdata',[],'colormap',[]);
+frames = repmat(init_getframe, Nz, 1 );
+frames(1) = getframe(figure(1));
+im = frame2im(frames(1));
+[imind,cm] = rgb2ind(im,256);
+imwrite(imind,cm,filename,'gif', 'Loopcount',inf);
 
-for t=2:dt:31
-    t_offset = t/6 + 0.84;
+i = 2;
+for t=0:dt:4.6
+    t_offset = t + 0.1;
     set(h1,'YData', A(xd).*y(xd, t_offset));
-    set(h2,'YData', A_exp(:,t));
-    set(h3,'YData', A(xc).*y(xc, t_offset));
-    pause(dt)
+    set(h2,'YData', A_exp(:,i));
+    drawnow
+    frames(i) = getframe(figure(1));
+    im = frame2im(frames(i));
+    [imind,cm] = rgb2ind(im,256);
+    imwrite(imind,cm,filename,'gif','WriteMode','append','delaytime',dt);    pause(dt)
+    i = i + 1;
 end
 
