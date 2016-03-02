@@ -10,12 +10,12 @@ x_half2 = ceil(numel(xc)/2);
 exp_inc_dec = @(x)  [x(1:x_half1).^(1/2).*Amax/L^(1/2) Amax-x(x_half2:end).^(1/2).*Amax/L^(1/2)];
 
 %% Constants
-xd = [0; 3; 6; 9; 12; 15; 18; 21];
-xc = 0:0.001:21;
-L = 21;
-f = 8; % Rad/s
+xd = [3, 6, 9, 12, 15, 18, 21, 23];
+xc = 3:.1:23;
+L = 23;
+f = 5; % Rad/s
 lambda = L;
-Amax = 9; % degrees
+Amax = 10; % degrees
 k = (2*pi)/lambda;
 Nz = 10; % s 
 dt = 0.05; % s
