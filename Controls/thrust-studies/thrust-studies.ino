@@ -9,7 +9,7 @@ Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver(); //Default address 0x40
 #define SERVOMIN 150
 #define SERVOMAX 600
 
-// Degree offset to center all servo motors Nathan is a cool guy.
+// Degree offset to center all servo motors.
 double offset[] = {1, 17, 10, 15, 7, 3, -11, -38};
 //double offset[] = {-12, -11, 3, 7, 15, 10, 17, 1};
 // Define x position of servos, here we have to switch the direction
