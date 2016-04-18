@@ -18,8 +18,8 @@ double xs[] = {28, 24.5, 21, 17.5, 14, 10.5, 5, 3.5};
 
 // Define wave parameters
 #define L 28 // Length of the fin
-#define Amax 25 // Amplitude (degrees)
-#define w 7 // Frequency (rad/s)
+#define Amax 10 // Amplitude (degrees)
+#define w 0 // Frequency (rad/s)
 #define lambda L // Wavelength
 #define center 90 // Degrees at center line
 

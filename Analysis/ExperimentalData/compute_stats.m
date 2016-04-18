@@ -6,6 +6,7 @@ results = struct();
 avg_v = struct();
 max_v = struct();
 min_v = struct();
+var = struct();
 
 for idxFile = 1:numel(data_files)
         % Import data
@@ -25,11 +26,13 @@ for idxFile = 1:numel(data_files)
         avg_v.(name{1}) = v_avg;
         max_v.(name{1}) = compute_avg_max(@max, v_steady, 0.01);
         min_v.(name{1}) = compute_avg_min(@min, v_steady, 0.01);
+        var.(name{1}) = std(v_steady);
 end
 
 results.avg = avg_v;
 results.max_force = max_v;
 results.min_force = min_v;
+results.std = var;
 end
 
 
